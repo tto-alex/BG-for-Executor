@@ -1,14 +1,26 @@
-function setup(){
-  createCanvas(windowWidth, windowHeight);
-  noStroke();
-  frameRate(15); // slows down redraw for subtle effect
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
 }
 
-function draw(){
-  background(20, 20, 20, 200); // very dark gray with some alpha for slight blending
+.bg-base {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212; /* dark base */
+  z-index: 0;
+}
 
-  fill(50, 50, 50, 40); // dark gray squares with low opacity
-  for(let i = 0; i < 5000; i++){ // reduce number of squares for subtlety
-    rect(random(width), random(height), 2, 2);
-  }
+.bg-mask {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0.7) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
